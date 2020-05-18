@@ -16,7 +16,7 @@ class handler
         $db_instance->rm_temp_dump();
       endforeach;
     } catch (BackerDBException $e) {
-      throw new Exception($e->getMessage());      
+      throw new \Exception($e->getMessage());      
     }
   }
 }
