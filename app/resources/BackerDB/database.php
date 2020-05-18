@@ -28,7 +28,7 @@ class database
 
     exec("mysqldump " .
           "--user={$_ENV->access('DB')['USER']} " .
-          "--password={$_ENV->access('DB')['PASS']} " .
+          "--password='{$_ENV->access('DB')['PASS']}' " .
           "--host={$_ENV->access('DB')['HOST']} {$this->db_name} " .
           "--result-file={$this->result_file} 2>&1", $message);
     print json_encode($message) . PHP_EOL;
