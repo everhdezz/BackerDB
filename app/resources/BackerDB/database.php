@@ -42,8 +42,12 @@ class database
     return $this;
   }
 
+  function get_limit($driver){
+    return !(isset($this->limits[$driver])) ? 7 : $this->limits[$driver];
+  }
+
   function __get($param){
-    return $this->db_conf[$param];
+    return isset($this->db_conf[$param]) ? $this->db_conf[$param] : '';
   }
 
   private function touchTempDir(){

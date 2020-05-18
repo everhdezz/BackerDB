@@ -24,14 +24,10 @@ class Local
   private function limitBackups(){
     $backups = glob("{$this->parent->path}backups/{$this->parent->db_name}_*.sql");
 
-    for ($i=0; $i < count($backups) - $this->getLimit(); $i++)
+    for ($i=0; $i < count($backups) - $this->parent->get_limit('local'); $i++)
       unlink($backups[$i]);
 
     return $this; 
-  }
-
-  private function getLimit(){
-    return !isset($this->parent->limits['local']) ? 7 : $this->parent->limits['local'];
   }
 
   private function touchLocalDir(){
